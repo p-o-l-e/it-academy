@@ -19,8 +19,6 @@ int _kbhit();
 #include <thread>
 #include <iostream>
 
-const unsigned bounded_rand(const unsigned&);
-
 class scroller 
 {
     private:
