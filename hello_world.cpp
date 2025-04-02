@@ -3,8 +3,8 @@
 
 int main (int argc, char *argv[]) 
 {
-    scroller hw(64, 64, "HELLO WORLD!");
-    hw.iterate(50);
+    scroller hw(128, 256, "HELLO WORLD!", scroller::format::binary);
+    hw.iterate(30);
     return 0;
 }
 
@@ -15,8 +15,26 @@ void scroller::init()
     for(int x = 0; x < rows; ++x) offset[x] = -bounded_rand(spacing); 
 };
 
-const std::string_view scroller::next_line() 
+const std::string scroller::convert(const std::string& str, const format& f)
 {
+    if(f == format::binary)
+    {
+        std::string r {};
+
+        for(int i = 0; i < str.length(); ++i)
+        {
+            r += ' ';
+            r.append(std::bitset<8>(str.at(i)).to_string().c_str());
+        }
+
+        return r;
+    }
+    return str;
+}
+
+const std::string scroller::next_line() 
+{
+    std::string line(rows, ' '); 
     for(int x = 0; x < rows; ++x)
     {
         if(offset[x] >= txt.length()) offset[x] = -bounded_rand(spacing);
@@ -38,12 +56,12 @@ void scroller::iterate(const int& ms)
     }
 }
 
-scroller::scroller(): line(std::string(rows, ' ')) 
+scroller::scroller() 
 { 
     init(); 
 }
  
-scroller::scroller(const int& _rows, const int& spaces, const std::string_view& text): rows(_rows), txt(text), spacing(spaces), line(std::string(rows, ' ')) 
+scroller::scroller(const int& _rows, const int& spaces, const std::string& text, const format& f): rows(_rows), txt(convert(text, f)), spacing(spaces)  
 { 
     init(); 
 }; 
