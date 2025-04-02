@@ -1,6 +1,3 @@
-#ifdef __linux__
-#include <sys/ioctl.h>
-#include <termios.h>
 int _kbhit();
 
 #elif defined _WIN32
@@ -18,22 +15,26 @@ int _kbhit();
 #include <chrono>
 #include <thread>
 #include <iostream>
+#include <bitset>
 
 class scroller 
 {
+    public:
+        enum class format { binary, string };
+    
     private:
-        const std::string_view txt { "" };
+        const std::string txt { "" };
         const unsigned spacing { 8 };
         const int rows { 8 };
-        std::string line;
         std::unique_ptr<int[]> offset;
+        static const std::string convert(const std::string&, const format&);
         void init();
 
     public:
-        const std::string_view next_line();
+        const std::string next_line();
         void iterate(const int& ms);
         scroller();
-        scroller(const int&, const int&, const std::string_view&);
+        scroller(const int&, const int&, const std::string&, const format&);
        ~scroller();
 };
 
