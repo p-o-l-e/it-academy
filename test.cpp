@@ -11,8 +11,8 @@ int main()
         std::cin>>value;
         std::cout<<"Value is "<<(value & 0b1 ? "odd" : "even");
         std::cout<<" and "<<((value < 0) ? "negative" : "positive")<<".\n";
-        std::cout<<"Given value is : "<<std::bitset<32>(value)<<"\n";
-        std::cout<<"Result      is : "<<std::bitset<32>(check_n_shift(value))<<"\n";
+        std::cout<<"Given value is : "<<std::bitset<__SIZEOF_INT__*8>(value)<<"\n";
+        std::cout<<"Result      is : "<<std::bitset<__SIZEOF_INT__*8>(check_n_shift(value))<<"\n";
     } 
     while (value);
     return 0;
