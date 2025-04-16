@@ -93,32 +93,33 @@ void findMinMax(const int& size)
     for(int i = 0; i < size; ++i)
     {
         std::cout<<std::format("Enter value{:>{}}: ", i + 1, digits);
+        int val;
         std::cin>>data[i];
         if (std::cin.fail())
         {
-            std::cout<<"\tNot a number!";
+            std::cout<<"\tNot a number!\n";
             return;
         }
         if(data[i] > max) max = data[i];
-        if(data[i] < min) min = data[i];
+        else if(data[i] < min) min = data[i];
     }
     std::cout<<"\nEntered values: ";
     for(int i = 0; i < size; ++i)
     {
         std::cout<<data[i]<<"  ";
     }
-    std::cout<<"\n";
-    std::cout<<"Min           : "<<min<<"\n";
-    std::cout<<"Max           : "<<max<<"\n";
+    std::cout<<"\n"
+             <<"Min           : "<<min<<"\n"
+             <<"Max           : "<<max<<"\n";
 }
 
 template <typename T>
-void xorSwap(T& a, T&b)
+void xorSwap(T& a, T&b) noexcept
 {
     a ^= b; b ^= a; a ^= b;
 }
 
-const int countDigits(const int& value)
+const int countDigits(const int& value) noexcept
 {
     return value? static_cast<int>(std::log10(std::abs(value))) + 1 : 1; 
 }
