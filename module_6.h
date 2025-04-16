@@ -9,6 +9,6 @@ void findMinMax(const int& size = 10);
 
 // Utility
 template <typename T>
-void xorSwap(T&, T&);
-const int countDigits(const int&);
+void xorSwap(T&, T&) noexcept;
+const int countDigits(const int&) noexcept;
 const int randInRange(const int&, const int&) noexcept;
