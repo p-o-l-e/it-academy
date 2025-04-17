@@ -103,7 +103,6 @@ const std::string SysInfo::getCpuType()
             else if (i == 0x80000004)
                 memcpy(CPUBrandString + 32, CPUInfo, sizeof(CPUInfo));
         }
-        // std::cout<<"CPU Model  : "<<CPUBrandString<<std::endl;
         return std::string(CPUBrandString);
     #elif _WIN32
         char CPUBrandString[0x40];
@@ -123,7 +122,6 @@ const std::string SysInfo::getCpuType()
             else if  (i == 0x80000004)
                 memcpy(CPUBrandString + 32, CPUInfo, sizeof(CPUInfo));
         }
-        std::cout<<"CPU Model  : "<<CPUBrandString<<std::endl;
         return std::string(CPUBrandString);
     #endif
         return std::string {};
