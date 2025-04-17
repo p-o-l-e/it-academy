@@ -7,8 +7,8 @@ const std::string factorial(const int& n)
     return n? string_multiply(std::to_string(n), factorial(n - 1)) : "1";
 }
 
-// Fürer's big numbers multiplication algorithm: 
-// https://en.wikipedia.org/wiki/Multiplication_algorithm#Further_improvements.
+// Written as solution of CodeWars kata: https://www.codewars.com/kata/55911ef14065454c75000062
+// Fürer's big numbers multiplication algorithm: https://en.wikipedia.org/wiki/Multiplication_algorithm#Further_improvements.
 
 const std::string string_multiply(const std::string& a, const std::string& b)
 {
@@ -67,28 +67,3 @@ const long factorial(const int& n)
 }
 
 #endif
-
-
-int main(void)
-{
-
-    while(true) 
-    { 
-        auto value = F_INIT;
-        std::cout<<"Enter value : ";
-        std::cin>>value;
-        std::cout<<"\n";
-
-        if(!value || std::isnan(value) || value > 20000) 
-        {
-            std::cout<<"Not a value! Valid value range [ 0..20000 ]\n";
-            break;
-        }
-        std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
-        std::cout<<factorial(value)<<"\n\n";
-        std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
-        std::cout << "Time elapsed : " << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() << "[ms]" << std::endl;
-    
-    }
-    return 0;
-}
