@@ -1,0 +1,23 @@
+cmake_minimum_required(VERSION 3.10)
+set(PROJECT_NAME "Book")
+set(EXECUTABLE_NAME "test")
+
+project(${PROJECT_NAME} VERSION 1.0 LANGUAGES CXX)
+set(CMAKE_CXX_STANDARD 23) 
+set(CMAKE_CXX_STANDARD_REQUIRED True)
+#set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -DDEBUG_MODE")
+
+add_compile_options(-Wfatal-errors -O3)
+
+file(GLOB SOURCES   ${CMAKE_SOURCE_DIR}/*.cpp ) 
+
+add_library(book STATIC ${SOURCES})
+
+add_executable(${EXECUTABLE_NAME} ${CMAKE_SOURCE_DIR}/test.cpp)
+
+include_directories(${CMAKE_SOURCE_DIR}/) 
+
+target_link_libraries(${EXECUTABLE_NAME} PRIVATE book)
+
+set_target_properties(${EXECUTABLE_NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib )
+add_custom_command(TARGET ${EXECUTABLE_NAME} POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_BINARY_DIR}/bin/test ${CMAKE_SOURCE_DIR}/bin )
