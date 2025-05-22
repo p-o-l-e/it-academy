@@ -1,0 +1,52 @@
+# General build artifacts
+*.o
+*.obj
+*.so
+*.a
+*.lib
+*.dll
+*.exe
+
+# CMake build directories and generated files
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+build/
+out/
+
+# Compiled binary files
+bin/
+lib/
+
+# IDE and editor-specific files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Debugging symbols and logs
+*.dSYM/
+*.pdb
+*.log
+
+# Temporary files
+*.tmp
+*.bak
+
+# Auto-generated headers
+*.moc
+*.qmake.stash
+
+# Coverage and profiling
+*.gcno
+*.gcda
+*.gcov
+
+# Packages and dependencies
+node_modules/
+__pycache__/
+
+# Ignore user-specific configuration files
+*.user
+*.session
