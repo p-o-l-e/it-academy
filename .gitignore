@@ -1,4 +1,5 @@
 # General build artifacts
+*.out
 *.o
 *.obj
 *.so
