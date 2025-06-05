@@ -16,17 +16,14 @@ include_directories(${CMAKE_SOURCE_DIR}/)
 
 target_link_libraries(${EXECUTABLE_NAME} PRIVATE forest)
 
-# Define compile flags correctly as lists
 set(DEBUG_FLAGS -g -O0 -Wall -Wextra -Wpedantic -Wfatal-errors -fsanitize=address -fsanitize=undefined -DDEBUG_MODE)
 set(RELEASE_FLAGS -Wfatal-errors -O3 -march=native -flto -DNDEBUG)
 
-# Apply compile options AFTER defining the target
 target_compile_options(${EXECUTABLE_NAME} PRIVATE
     $<$<CONFIG:DEBUG>:${DEBUG_FLAGS}>
     $<$<CONFIG:RELEASE>:${RELEASE_FLAGS}>
 )
 
-# Ensure the output directories exist
 file(MAKE_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
 
 set_target_properties(${EXECUTABLE_NAME} PROPERTIES

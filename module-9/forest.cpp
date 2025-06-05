@@ -33,12 +33,6 @@ void Forest::growUp(const Tree& tree)
     grove.emplace_back(std::move(tree)); 
 }
 
-void Forest::growUp(Tree&& tree) 
-{   
-    grove.emplace_back(std::move(tree)); 
-}
-
-
 void Forest::windAll() const 
 { 
     for(const auto& o: grove) o.wind(); 

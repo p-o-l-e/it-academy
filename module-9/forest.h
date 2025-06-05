@@ -30,7 +30,6 @@ class Forest
 {
     public:
         void growUp(const Tree&);
-        void growUp(Tree&&);
         void windAll() const;
         void cutAll();
         const size_t getTreesNumber() const;
