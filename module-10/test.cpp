@@ -19,6 +19,10 @@ int main()
     std::cout<<"\nConiferous trees: "<<c_forest.getTreesNumber()<<"\n\n";
     d_forest.wind();
     std::cout<<"\nDeciduous trees : "<<d_forest.getTreesNumber()<<"\n\n";
-
+    
+    for(auto& tree: trees)
+    {
+        delete tree;
+    }
     return 0;
 }
